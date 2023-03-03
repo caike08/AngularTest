@@ -1,0 +1,30 @@
+#page{
+  display: flex;
+  aside{
+    position: relative;
+    padding: 1rem 8px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    height: 100vh;
+    gap: 0.5rem;
+    justify-items: center;
+    width: 270px;
+    background-color: var(--indigo-50);
+    border-right: 1px solid var(--bluegray-300);
+    .dark-button{
+      background-color: var(--blue-700);
+    }
+  }
+  main{
+    position: relative;
+    padding: 20px 1.5rem;
+    width: calc(100vw - 270px);
+    overflow: auto;
+    .box{
+      padding: 2rem;
+      background-color: white;
+      border-radius: 1rem;
+    }
+  }
+}

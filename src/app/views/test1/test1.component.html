@@ -1,0 +1,48 @@
+<div id="test1">
+  <div class="items-grid">
+    <button
+      *ngFor="let item of items$ | async"
+      pButton
+      [icon]="item.icon"
+      (click)="addItem(item)"
+    >
+      <div class="button-container">
+        <div>{{ item.name }}</div>
+        <div>
+          <i class="pi pi-tag"></i>
+          <h5>{{ item.price | currency : "R$" }}</h5>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div id="cart">
+    <div class="cart-header">
+      <p>
+        Total price: <span>{{ total$ | async }}</span>
+      </p>
+      <p>
+        Cart size: <span>{{ cartSize$ | async }}</span>
+      </p>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-trash"
+        label="Clean"
+        class="p-button-danger"
+        [ngStyle]="{ height: '45px' }"
+        (click)="cleanCart()"
+      ></button>
+    </div>
+    <button
+      *ngFor="let item of selectedItems$ | async; let i = index"
+      pButton
+      type="button"
+      class="p-button-outlined p-button-secondary"
+      icon="pi pi-times-circle"
+      iconPos="right"
+      [label]="item.name"
+      [ngStyle]="{ height: '45px', width: '100%' }"
+      (click)="removeItem(item.id)"
+    ></button>
+  </div>
+</div>

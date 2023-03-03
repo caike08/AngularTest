@@ -1,0 +1,34 @@
+<div id="page">
+  <aside>
+    <button
+      pButton
+      label="Home"
+      [routerLink]="'explanation'"
+      [ngStyle]="{ 'width.px': 250, 'height.px': 50 }"
+      [routerLinkActive]="'dark-button'"
+    ></button>
+    <button
+      pButton
+      label="Test 1"
+      [routerLink]="'test1'"
+      [ngStyle]="{ 'width.px': 250, 'height.px': 50 }"
+      [routerLinkActive]="'dark-button'"
+    ></button>
+    <button
+      pButton
+      label="Test 2"
+      [routerLink]="'test2'"
+      [ngStyle]="{ 'width.px': 250, 'height.px': 50 }"
+      [routerLinkActive]="'dark-button'"
+    ></button>
+  </aside>
+  <main>
+    <app-explanation-box
+      *ngIf="!!explanation"
+      [explanation]="explanation"
+    ></app-explanation-box>
+    <div class="box">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
