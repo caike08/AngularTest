@@ -9,18 +9,37 @@ import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { SharedModule } from '../shared/shared.module';
 
+import { UsersService } from '../core/services/users/users.service';
+import { SortByPipe } from '../core/pipes/sortBy/sort-by.pipe';
+
+const SERVICE_LIST = [
+  UsersService,
+]
+
+const PIPE_LIST = [
+  SortByPipe,
+]
+
+const COMPONENT_LIST = [
+  HomeComponent,
+  Test1Component,
+  Test2Component,
+  ExplanationComponent,
+]
+
 @NgModule({
-    declarations: [
-        HomeComponent,
-        Test1Component,
-        Test2Component,
-        ExplanationComponent
-    ],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        ButtonModule,
-        SharedModule,
-    ]
+  declarations: [
+    ...COMPONENT_LIST,
+    ...PIPE_LIST,
+  ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    ButtonModule,
+    SharedModule,
+  ],
+  providers: [
+    ...SERVICE_LIST,
+  ],
 })
 export class HomeModule { }

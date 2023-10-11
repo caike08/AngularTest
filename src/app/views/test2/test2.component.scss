@@ -1,0 +1,43 @@
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid #CCC;
+    border-radius: 6px;
+
+    .header {
+        display: inline-flex;
+        flex-direction: row;
+        width: 100%;
+        border-bottom: 1px solid #CCC;
+    }
+
+    .header-item {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .id,
+    .name {
+        flex: 1;
+    }
+
+    .id {
+        text-align: center;
+    }
+
+    .name {
+        text-align: left;
+    }
+}

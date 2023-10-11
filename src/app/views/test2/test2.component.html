@@ -1,3 +1,28 @@
 <div id="test2">
-  Create the table here
+    <ng-container *ngIf="userList$ | async as list; else loading">
+        <ng-container *ngIf="list.length; else noUsers">
+            <div class="table">
+                <div class="header">
+                    <div class="header-item">
+                        ID
+                    </div>
+                    <div class="header-item">
+                        <div class="header-item">
+                            Name
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let user of list | sortBy: orderBy" class="item">
+                    <div class="id">{{ user.id }}</div>
+                    <div class="name">{{ user.name }}</div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #noUsers>No users 😢</ng-template>
+    </ng-container>
 </div>
+
+<ng-template #loading>
+    Loading...
+</ng-template>

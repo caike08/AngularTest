@@ -20,15 +20,21 @@ export class Test1Component {
   selectedItems$ = new BehaviorSubject<ShoppingItem[]>([]);
 
   total$ = this.selectedItems$.pipe(
-    map((i) => i.map((x) => x.price).reduce((prev, curr) => prev + curr + 10, 0))
+    map((i) => i.map((x) => x.price).reduce((prev, curr) => prev + curr, 0))
   );
 
   cartSize$ = this.selectedItems$.pipe(
     map(i => i.length)
   )
 
-  addItem(item :ShoppingItem): void {
-    this.selectedItems$.next([item])
+  addItem(item: ShoppingItem): void {
+    const previousValues = this.selectedItems$.getValue();
+
+    // since we might have similar ID to what was previously defined in items$,
+    // we need to generate a new ID for this item
+    const itemWithUpdatedId: ShoppingItem = { ...item, id: Date.now() }
+
+    this.selectedItems$.next([...previousValues, itemWithUpdatedId])
   }
 
   removeItem(itemId: number): void {
@@ -36,6 +42,6 @@ export class Test1Component {
   }
 
   cleanCart(): void {
-    this.selectedItems$.next([this.selectedItems$.getValue()[1]])
+    this.selectedItems$.next([])
   }
 }
